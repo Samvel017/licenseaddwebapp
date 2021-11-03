@@ -206,21 +206,31 @@
       </header>
       <nav>
         <ul class="nav-list">
-          <li><a href="#">Subscription</a></li>
+          <li><a href="#" class="subs">Subscription</a></li>
           <li><a href="#">Outright</a></li>
-          <li><a href="./index.html" class="active">Offline Activation</a></li>
+          <li>
+            <a href="./index.html" class="activeTab offAct">Offline Activation</a>
+          </li>
         </ul>
       </nav>
       <main>
-        <h2>Systems</h2>
-        <div class="system-section">
-          <div class="system-title">
-            <ul>
-              <li><span>System Name</span></li>
-              <li><span>ID</span></li>
-              <li><span>Created date</span></li>
-              <li><span>Active Licenses</span></li>
-            </ul>
+        <div class="system-container">
+          <h2>Systems</h2>
+          <div class="system-section">
+            <div class="system-title">
+              <ul>
+                <li><span>System Name</span></li>
+                <li><span>ID</span></li>
+                <li><span>Created date</span></li>
+                <li><span>Active Licenses</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="user-container hide">
+          <h2>Users info <div class="users">0</div></h2>
+          <div class="user-section">
+
           </div>
         </div>
       </main>
@@ -238,7 +248,6 @@
       </div>
     </div>
 
-    
     <script src="./script.js"></script>
   </body>
 </html>

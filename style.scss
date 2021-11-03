@@ -77,12 +77,9 @@ nav {
         display: block;
         color: #d6ddde;
         opacity: 0.6;
-        &.active {
-          opacity: 1;
-          border-bottom: 2px solid #18a7ff;
-        }
         &:hover {
           border-bottom: 2px solid #18a7ff;
+          opacity: 1;
         }
       }
     }
@@ -193,6 +190,17 @@ main {
     }
   }
 }
+// --------  TAB MENU  -------------
+.hide {
+  display: none;
+}
+.activeTab {
+  opacity: 1 !important;
+  border-bottom: 2px solid #18a7ff;
+}
+
+// ---------------------------------
+
 .system {
   margin-bottom: 25px;
 }
@@ -349,6 +357,57 @@ main {
     color: #499861;
   }
 }
+.user-container h2 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 10px;
+}
+.users {
+  width: 30px;
+  height: 30px;
+  background-color: #18a7ff;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.user-section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-gap: 20px;
+  .user-box {
+    max-width: 300px;
+    background-color: #1a1c1e;
+    color: #fff;
+    width: 100%;
+    ul {
+      padding: 15px;
+      li {
+        margin-bottom: 10px;
+        span {
+          color: rgba(214, 221, 222, 0.6);
+        }
+      }
+    }
+    .userRemove {
+      width: 100%;
+      font-size: 18px;
+      background-color: #cc4343;
+      color: #fff;
+      padding: 7px 0;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s all;
+      &:hover {
+        background-color: rgb(255, 0, 0);
+      }
+    }
+  }
+}
 
 @media screen and(max-width:960px) {
   .system-block .buttons .addLicense {
@@ -444,7 +503,6 @@ main {
   .system-block .buttons .removeSystem::after {
     display: none;
   }
-
 }
 @media screen and(max-width:680px) {
   .container {
@@ -491,7 +549,7 @@ main {
   main .system-title ul {
     justify-content: space-between;
     grid-gap: 0;
-  } 
+  }
   .system-block ul li {
     text-align: center;
   }
@@ -547,7 +605,8 @@ main {
   main h2 {
     text-align: center;
   }
-  .modal-lic-bg, .modal-other-bg {
+  .modal-lic-bg,
+  .modal-other-bg {
     padding: 0 20px;
   }
   main .license-container {
@@ -564,11 +623,15 @@ main {
     grid-gap: 15px;
   }
 }
-@media screen and(max-width:480px) {
+@media screen and(max-width:560px) {
   main .license-title ul {
-    margin: 0 auto;
-    padding: 0 auto;
+    max-width: 200px;
   }
+  main .license-container .license-block ul {
+    max-width: 200px;
+  }
+}
+@media screen and(max-width:480px) {
   main .license-title {
     padding-left: 0;
     margin: 0 auto 8px auto;
@@ -576,12 +639,18 @@ main {
   main .license-container {
     padding-left: 0;
   }
-  main .license-container .license-block ul {
-    margin: 0 auto;
+  main .license-title ul {
+    padding-left: 16px;
   }
 }
 @media screen and(max-width:425px) {
   .system-block ul li {
     font-size: 13px;
+  }
+  nav .nav-list {
+    grid-gap: 20px;
+  }
+  nav .nav-list li a {
+    padding: 0 0 23px 0;
   }
 }

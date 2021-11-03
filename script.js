@@ -4,7 +4,7 @@ let modalLic = document.querySelector('.modal-lic');
 // let modalOtherBg = document.querySelector('.modal-other-bg');
 // let modalOther = document.querySelector('.modal-other');
 
-//  ------------- MODALS ----------------
+//  ------------- MODALS -----------------
 
 modalLicBg.addEventListener('click', (e) => {
   if (e.target == modalLicBg && e.target != modalLic) {
@@ -16,14 +16,53 @@ upgradeBut.addEventListener('click', () => {
   modalLicBg.style.display = 'grid';
 });
 
+// ---------------------------------------
 
+// --------------- Tab Menu --------------
 
-// -------------------------------
+let subs = document.querySelector('.subs')
+let offAct = document.querySelector('.offAct')
+
+subs.addEventListener('click', (e) => {
+  e.preventDefault()
+  subs.classList.add('activeTab')
+  offAct.classList.remove('activeTab')
+  userContainer.classList.remove('hide')
+  systemContainer.classList.add('hide')
+})
+offAct.addEventListener('click', (e) => {
+  e.preventDefault()
+  offAct.classList.add('activeTab')
+  subs.classList.remove('activeTab')
+  systemContainer.classList.remove('hide')
+  userContainer.classList.add('hide')
+})
+
+// ---------------------------------------
 
 let sysName = document.querySelector('#name');
 let sysId = document.querySelector('#id');
 let addSystem = document.querySelector('#addSystem');
 let systemSection = document.querySelector('.system-section');
+let systemContainer = document.querySelector('.system-container');
+let userContainer = document.querySelector('.user-container');
+let userSection = document.querySelector('.user-section');
+
+var userDate = new Date();
+var usMonth = userDate.getUTCMonth() + 1;
+var usDay = userDate.getUTCDate();
+var usYear = userDate.getUTCFullYear();
+var newdate = usYear + '/' + usMonth + '/' + usDay;
+
+let user = {
+  name: '',
+  activeLicenses: 0,
+  id: '',
+  createdDate: newdate,
+};
+
+let usersCount = document.querySelector('.users')
+let users = 0
 
 addSystem.addEventListener('click', () => {
   if (sysName.value != '' && sysId.value != '') {
@@ -65,24 +104,50 @@ addSystem.addEventListener('click', () => {
     </div>
     `;
     systemSection.append(system);
+    users++
+    usersCount.innerHTML = users
     modalLicBg.style.display = 'none';
+
+    // ---------------- User Container -----------
+
+    user.name = sysName.value;
+    user.id = sysId.value;
+
+    let userBox = document.createElement('div');
+    userBox.classList.add('user-box');
+    userBox.innerHTML = `
+    <ul>
+      <li><span>Name:</span> ${user.name}</li>
+      <li><span>User ID:</span> ${user.id}</li>
+      <li><span>Created Date:</span> ${user.createdDate}</li>
+      <li><span>Active Licenses:</span> ${user.activeLicenses}</li>
+    </ul>
+    <button class="userRemove">Remove User</button>
+    `;
+    let userRemove = userBox.lastElementChild;
+    userSection.append(userBox);
+
+    // -------------------------------------------
+
     // ---------------- Count --------------------
 
-    let actLic = system.firstElementChild.firstElementChild.lastElementChild.firstElementChild
-    let count = 0
-
+    let actLic =
+      system.firstElementChild.firstElementChild.lastElementChild
+        .firstElementChild;
+    let count = 0;
 
     // -------------------------------------------
 
     // ---------------- Accordion ----------------
 
-    let licenseOp = system.firstElementChild.firstElementChild.firstElementChild
-    let arrow = licenseOp.firstElementChild
-    let license = system.lastElementChild
+    let licenseOp =
+      system.firstElementChild.firstElementChild.firstElementChild;
+    let arrow = licenseOp.firstElementChild;
+    let license = system.lastElementChild;
     licenseOp.addEventListener('click', () => {
-      license.classList.toggle('open-list')
-      arrow.classList.toggle('rotate')
-    })
+      license.classList.toggle('open-list');
+      arrow.classList.toggle('rotate');
+    });
 
     // -------------------------------------------
 
@@ -92,8 +157,8 @@ addSystem.addEventListener('click', () => {
     let removeLic = system.firstElementChild.lastElementChild.lastElementChild;
 
     addLic.addEventListener('click', () => {
-      let modalOtherBg = document.createElement('div')
-      modalOtherBg.classList.add('modal-other-bg')
+      let modalOtherBg = document.createElement('div');
+      modalOtherBg.classList.add('modal-other-bg');
       modalOtherBg.innerHTML = `
       <div class="modal-other">
         <h2>Please fill out the form</h2>
@@ -105,14 +170,14 @@ addSystem.addEventListener('click', () => {
         </div>
         <button class="addLicBlock">Add License</button>
       </div>
-      `
-      document.body.lastElementChild.before(modalOtherBg)
-      modalOtherBg.style.display = 'grid'
+      `;
+      document.body.lastElementChild.before(modalOtherBg);
+      modalOtherBg.style.display = 'grid';
 
-      let modalOther = modalOtherBg.firstElementChild
+      let modalOther = modalOtherBg.firstElementChild;
       modalOtherBg.addEventListener('click', (e) => {
         if (e.target == modalOtherBg && e.target != modalOther) {
-          modalOtherBg.remove()
+          modalOtherBg.remove();
         }
       });
 
@@ -136,26 +201,40 @@ addSystem.addEventListener('click', () => {
           </ul>
           <button class="removeLic">Remove</button>
           `;
-          addLic.parentElement.parentElement.parentElement.lastElementChild.lastElementChild.append(licenseBlock);
+          addLic.parentElement.parentElement.parentElement.lastElementChild.lastElementChild.append(
+            licenseBlock
+          );
           licenseBlock.lastElementChild.addEventListener('click', () => {
-            licenseBlock.remove()
-            actLic.innerHTML = --count
+            licenseBlock.remove();
+            actLic.innerHTML = --count;
+            user.activeLicenses = count;
+            userBox.firstElementChild.lastElementChild.innerHTML = `<span>Active Licenses:</span> ${user.activeLicenses}`;
           });
-          actLic.innerHTML = ++count
-          modalOtherBg.remove()
-        }else {
-          alert('Please fill inputs.')
+          actLic.innerHTML = ++count;
+          user.activeLicenses = count;
+          userBox.firstElementChild.lastElementChild.innerHTML = `<span>Active Licenses:</span> ${user.activeLicenses}`;
+          modalOtherBg.remove();
+        } else {
+          alert('Please fill inputs.');
         }
       });
     });
-
+    userRemove.addEventListener('click', () => {
+      system.remove();
+      userBox.remove();
+      users--
+      usersCount.innerHTML = users
+    });
     removeLic.addEventListener('click', () => {
       system.remove();
+      userBox.remove();
+      users--
+      usersCount.innerHTML = users
     });
-    sysName.value = ''
-    sysId.value = ''
+    sysName.value = '';
+    sysId.value = '';
     //  ---------------------------------------------
-  }else {
-    alert('Please fill inputs.')
+  } else {
+    alert('Please fill inputs.');
   }
 });
