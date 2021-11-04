@@ -120,7 +120,7 @@ addSystem.addEventListener('click', () => {
       <li><span>Name:</span> ${user.name}</li>
       <li><span>User ID:</span> ${user.id}</li>
       <li><span>Created Date:</span> ${user.createdDate}</li>
-      <li><span>Active Licenses:</span> ${user.activeLicenses}</li>
+      <li><span>Active Licenses:</span> 0</li>
     </ul>
     <button class="userRemove">Remove User</button>
     `;
