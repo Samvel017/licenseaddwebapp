@@ -91,10 +91,13 @@ nav {
 main {
   padding-top: 43px;
   .license {
-    height: 0;
-    overflow: hidden;
-    overflow-y: auto;
-    transition: 0.3s height;
+    // height: 0;
+    // overflow: hidden;
+    // overflow-y: auto;
+    transition: 0.2s all;
+    z-index: 9;
+    padding-top: 8px;
+    transform: translateY(0%);
   }
   h2 {
     color: #d6ddde;
@@ -203,6 +206,8 @@ main {
 
 .system {
   margin-bottom: 25px;
+  overflow-y: hidden;
+  position: relative;
 }
 .system-block {
   background-color: #1a1c1e;
@@ -211,6 +216,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 10;
   ul {
     display: flex;
     justify-content: space-between;
@@ -237,7 +244,8 @@ main {
       .fas {
         color: rgba(214, 221, 222, 1);
         margin-right: 16px;
-        transform: rotate(270deg);
+        transform: rotate(0deg);
+        transition: .2s all;
       }
       span {
         color: rgba(214, 221, 222, 1);
@@ -272,12 +280,16 @@ main {
   }
 }
 .rotate {
-  transform: rotate(0deg) !important;
+  transform: rotate(-90deg) !important;
 }
 .open-list {
-  height: max-content !important;
-  transition: 0.5s height;
-  padding-top: 8px;
+  transform: translateY(-100%) !important;
+}
+.position1 {
+  position: absolute;
+}
+.position2 {
+  position: relative;
 }
 .modal-lic-bg,
 .modal-other-bg {

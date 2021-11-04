@@ -126,11 +126,12 @@ main {
 }
 
 main .license {
-  height: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  -webkit-transition: 0.3s height;
-  transition: 0.3s height;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  z-index: 9;
+  padding-top: 8px;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 main h2 {
@@ -270,6 +271,8 @@ main .license-container .license-block .removeLic:hover {
 
 .system {
   margin-bottom: 25px;
+  overflow-y: hidden;
+  position: relative;
 }
 
 .system-block {
@@ -285,6 +288,8 @@ main .license-container .license-block .removeLic:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .system-block ul {
@@ -324,8 +329,10 @@ main .license-container .license-block .removeLic:hover {
 .system-block ul li .fas {
   color: #d6ddde;
   margin-right: 16px;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: .2s all;
+  transition: .2s all;
 }
 
 .system-block ul li span {
@@ -368,17 +375,21 @@ main .license-container .license-block .removeLic:hover {
 }
 
 .rotate {
-  -webkit-transform: rotate(0deg) !important;
-          transform: rotate(0deg) !important;
+  -webkit-transform: rotate(-90deg) !important;
+          transform: rotate(-90deg) !important;
 }
 
 .open-list {
-  height: -webkit-max-content !important;
-  height: -moz-max-content !important;
-  height: max-content !important;
-  -webkit-transition: 0.5s height;
-  transition: 0.5s height;
-  padding-top: 8px;
+  -webkit-transform: translateY(-100%) !important;
+          transform: translateY(-100%) !important;
+}
+
+.position1 {
+  position: absolute;
+}
+
+.position2 {
+  position: relative;
 }
 
 .modal-lic-bg,

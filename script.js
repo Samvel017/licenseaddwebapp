@@ -20,23 +20,23 @@ upgradeBut.addEventListener('click', () => {
 
 // --------------- Tab Menu --------------
 
-let subs = document.querySelector('.subs')
-let offAct = document.querySelector('.offAct')
+let subs = document.querySelector('.subs');
+let offAct = document.querySelector('.offAct');
 
 subs.addEventListener('click', (e) => {
-  e.preventDefault()
-  subs.classList.add('activeTab')
-  offAct.classList.remove('activeTab')
-  userContainer.classList.remove('hide')
-  systemContainer.classList.add('hide')
-})
+  e.preventDefault();
+  subs.classList.add('activeTab');
+  offAct.classList.remove('activeTab');
+  userContainer.classList.remove('hide');
+  systemContainer.classList.add('hide');
+});
 offAct.addEventListener('click', (e) => {
-  e.preventDefault()
-  offAct.classList.add('activeTab')
-  subs.classList.remove('activeTab')
-  systemContainer.classList.remove('hide')
-  userContainer.classList.add('hide')
-})
+  e.preventDefault();
+  offAct.classList.add('activeTab');
+  subs.classList.remove('activeTab');
+  systemContainer.classList.remove('hide');
+  userContainer.classList.add('hide');
+});
 
 // ---------------------------------------
 
@@ -61,8 +61,8 @@ let user = {
   createdDate: newdate,
 };
 
-let usersCount = document.querySelector('.users')
-let users = 0
+let usersCount = document.querySelector('.users');
+let users = 0;
 
 addSystem.addEventListener('click', () => {
   if (sysName.value != '' && sysId.value != '') {
@@ -104,8 +104,8 @@ addSystem.addEventListener('click', () => {
     </div>
     `;
     systemSection.append(system);
-    users++
-    usersCount.innerHTML = users
+    users++;
+    usersCount.innerHTML = users;
     modalLicBg.style.display = 'none';
 
     // ---------------- User Container -----------
@@ -146,6 +146,15 @@ addSystem.addEventListener('click', () => {
     let license = system.lastElementChild;
     licenseOp.addEventListener('click', () => {
       license.classList.toggle('open-list');
+      if (license.classList.contains('open-list')) {
+        setTimeout(() => {
+          license.classList.add('position1');
+          license.classList.remove('position2');
+        }, 200);
+      } else {
+        license.classList.add('position2');
+        license.classList.remove('position1');
+      }
       arrow.classList.toggle('rotate');
     });
 
@@ -222,14 +231,14 @@ addSystem.addEventListener('click', () => {
     userRemove.addEventListener('click', () => {
       system.remove();
       userBox.remove();
-      users--
-      usersCount.innerHTML = users
+      users--;
+      usersCount.innerHTML = users;
     });
     removeLic.addEventListener('click', () => {
       system.remove();
       userBox.remove();
-      users--
-      usersCount.innerHTML = users
+      users--;
+      usersCount.innerHTML = users;
     });
     sysName.value = '';
     sysId.value = '';
