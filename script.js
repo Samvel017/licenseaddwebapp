@@ -64,6 +64,19 @@ let user = {
 let usersCount = document.querySelector('.users');
 let users = 0;
 
+sysName.addEventListener('keyup', (event) => {
+  if(event.keyCode === 13) {
+    event.preventDefault();
+    addSystem.click();
+  }
+})
+sysId.addEventListener('keyup', (event) => {
+  if(event.keyCode === 13) {
+    event.preventDefault();
+    addSystem.click();
+  }
+})
+
 addSystem.addEventListener('click', () => {
   if (sysName.value != '' && sysId.value != '') {
     let system = document.createElement('div');
@@ -194,6 +207,18 @@ addSystem.addEventListener('click', () => {
       let licExp = document.querySelector('#licExp');
       let addLicBlock = document.querySelector('.addLicBlock');
 
+      licName.addEventListener('keyup', (event) => {
+        if(event.keyCode === 13) {
+          event.preventDefault();
+          addLicBlock.click();
+        }
+      })
+      licExp.addEventListener('keyup', (event) => {
+        if(event.keyCode === 13) {
+          event.preventDefault();
+          addLicBlock.click();
+        }
+      })
       addLicBlock.addEventListener('click', () => {
         if (licName.value != '' && licExp.value != '') {
           let licenseBlock = document.createElement('div');
