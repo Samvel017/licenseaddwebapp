@@ -65,19 +65,19 @@ let usersCount = document.querySelector('.users');
 let users = 0;
 
 sysName.addEventListener('keyup', (event) => {
-  if(event.keyCode === 13) {
-    event.preventDefault();
+  event.preventDefault();
+  if (event.keyCode === 13) {
     addSystem.click();
   }
-})
+});
 sysId.addEventListener('keyup', (event) => {
-  if(event.keyCode === 13) {
-    event.preventDefault();
+  event.preventDefault();
+  if (event.keyCode === 13) {
     addSystem.click();
   }
-})
-
-addSystem.addEventListener('click', () => {
+});
+addSystem.addEventListener('click', (event) => {
+  event.preventDefault();
   if (sysName.value != '' && sysId.value != '') {
     let system = document.createElement('div');
     system.classList.add('system');
@@ -100,7 +100,7 @@ addSystem.addEventListener('click', () => {
         <li><span class="activeLic">0</span></li>
       </ul>
       <div class="buttons">
-        <button class="addLicense">Add License</button>
+        <button class="addLicense" onclick="this.blur();">Add License</button>
         <button class="removeSystem">Remove</button>
       </div>
     </div>
@@ -207,18 +207,18 @@ addSystem.addEventListener('click', () => {
       let licExp = document.querySelector('#licExp');
       let addLicBlock = document.querySelector('.addLicBlock');
 
-      licName.addEventListener('keyup', (event) => {
-        if(event.keyCode === 13) {
-          event.preventDefault();
+      licName.addEventListener('keyup', (ev) => {
+        ev.preventDefault();
+        if (ev.keyCode === 13) {
           addLicBlock.click();
         }
-      })
-      licExp.addEventListener('keyup', (event) => {
-        if(event.keyCode === 13) {
-          event.preventDefault();
+      });
+      licExp.addEventListener('keyup', (ev) => {
+        ev.preventDefault();
+        if (ev.keyCode === 13) {
           addLicBlock.click();
         }
-      })
+      });
       addLicBlock.addEventListener('click', () => {
         if (licName.value != '' && licExp.value != '') {
           let licenseBlock = document.createElement('div');
