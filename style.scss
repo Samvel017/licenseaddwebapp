@@ -81,7 +81,7 @@ nav {
         &:hover {
           opacity: 1;
           &::after {
-            transform: scale(1,1);
+            transform: scale(1, 1);
           }
         }
         &::after {
@@ -92,8 +92,8 @@ nav {
           background-color: #18a7ff;
           bottom: 0;
           left: 0;
-          transition: .3s all;
-          transform: scale(0,1);
+          transition: 0.3s all;
+          transform: scale(0, 1);
         }
       }
     }
@@ -211,7 +211,7 @@ main {
 .activeTab {
   opacity: 1 !important;
   &::after {
-    transform: scale(1,1) !important;
+    transform: scale(1, 1) !important;
   }
 }
 
@@ -258,7 +258,7 @@ main {
         color: rgba(214, 221, 222, 1);
         margin-right: 16px;
         transform: rotate(0deg);
-        transition: .2s all;
+        transition: 0.2s all;
       }
       span {
         color: rgba(214, 221, 222, 1);
@@ -310,11 +310,11 @@ main {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
-  display: none;
-  place-items: center;
+  visibility: hidden;
+  opacity: 0;
   transition: 0.3s all;
   .modal-lic,
   .modal-other {
@@ -322,17 +322,26 @@ main {
     width: 100%;
     background-color: #fff;
     border-radius: 10px;
-    padding: 15px 25px;
-    display: flex;
+    padding: 15px 0px 15px 25px;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    position: absolute;
+    transition: 0.3s all;
+    left: 50%;
+    transform: translate(-50%, -100%);
     z-index: 11;
     h2 {
       margin-bottom: 15px;
       font-size: 24px;
     }
   }
+}
+.modal-bg-anim {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-anim {
+  transform: translate(-50%, 80%) !important;
 }
 .modal-input {
   width: 90%;
@@ -654,6 +663,16 @@ main {
   }
   main .license-container .license-block ul {
     max-width: 200px;
+  }
+  .modal-lic-bg .modal-lic,
+  .modal-lic-bg .modal-other,
+  .modal-other-bg .modal-lic,
+  .modal-other-bg .modal-other {
+    max-width: 340px;
+  }
+  #addSystem, .addLicBlock {
+    margin: 15px auto 0 auto;
+    display: block;
   }
 }
 @media screen and(max-width:480px) {

@@ -130,8 +130,8 @@ nav .nav-list li a::after {
   background-color: #18a7ff;
   bottom: 0;
   left: 0;
-  -webkit-transition: .3s all;
-  transition: .3s all;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
   -webkit-transform: scale(0, 1);
           transform: scale(0, 1);
 }
@@ -354,8 +354,8 @@ main .license-container .license-block .removeLic:hover {
   margin-right: 16px;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  -webkit-transition: .2s all;
-  transition: .2s all;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
 }
 
 .system-block ul li span {
@@ -421,11 +421,11 @@ main .license-container .license-block .removeLic:hover {
   width: 100%;
   height: 100%;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   left: 0;
-  display: none;
-  place-items: center;
+  visibility: hidden;
+  opacity: 0;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
@@ -438,10 +438,7 @@ main .license-container .license-block .removeLic:hover {
   width: 100%;
   background-color: #fff;
   border-radius: 10px;
-  padding: 15px 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  padding: 15px 0px 15px 25px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -449,7 +446,12 @@ main .license-container .license-block .removeLic:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
+  position: absolute;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+  left: 50%;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
   z-index: 11;
 }
 
@@ -459,6 +461,16 @@ main .license-container .license-block .removeLic:hover {
 .modal-other-bg .modal-other h2 {
   margin-bottom: 15px;
   font-size: 24px;
+}
+
+.modal-bg-anim {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-anim {
+  -webkit-transform: translate(-50%, 80%) !important;
+          transform: translate(-50%, 80%) !important;
 }
 
 .modal-input {
@@ -855,6 +867,16 @@ main .license-container .license-block .removeLic:hover {
   }
   main .license-container .license-block ul {
     max-width: 200px;
+  }
+  .modal-lic-bg .modal-lic,
+  .modal-lic-bg .modal-other,
+  .modal-other-bg .modal-lic,
+  .modal-other-bg .modal-other {
+    max-width: 340px;
+  }
+  #addSystem, .addLicBlock {
+    margin: 15px auto 0 auto;
+    display: block;
   }
 }
 

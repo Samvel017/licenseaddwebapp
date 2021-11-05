@@ -8,12 +8,14 @@ let modalLic = document.querySelector('.modal-lic');
 
 modalLicBg.addEventListener('click', (e) => {
   if (e.target == modalLicBg && e.target != modalLic) {
-    modalLicBg.style.display = 'none';
+    modalLicBg.classList.remove('modal-bg-anim')
+    modalLic.classList.remove('modal-anim')
   }
 });
 
 upgradeBut.addEventListener('click', () => {
-  modalLicBg.style.display = 'grid';
+  modalLicBg.classList.add('modal-bg-anim');
+  modalLic.classList.add('modal-anim')
 });
 
 // ---------------------------------------
@@ -119,7 +121,8 @@ addSystem.addEventListener('click', (event) => {
     systemSection.append(system);
     users++;
     usersCount.innerHTML = users;
-    modalLicBg.style.display = 'none';
+    modalLicBg.classList.remove('modal-bg-anim')
+    modalLic.classList.remove('modal-anim')
 
     // ---------------- User Container -----------
 
@@ -193,13 +196,20 @@ addSystem.addEventListener('click', (event) => {
         <button class="addLicBlock">Add License</button>
       </div>
       `;
-      document.body.lastElementChild.before(modalOtherBg);
-      modalOtherBg.style.display = 'grid';
-
       let modalOther = modalOtherBg.firstElementChild;
+      setTimeout(() => {
+        modalOtherBg.classList.add('modal-bg-anim')
+        modalOther.classList.add('modal-anim')
+      },10)
+      
+      document.body.lastElementChild.before(modalOtherBg);
       modalOtherBg.addEventListener('click', (e) => {
         if (e.target == modalOtherBg && e.target != modalOther) {
-          modalOtherBg.remove();
+          modalOtherBg.classList.remove('modal-bg-anim')
+          modalOther.classList.remove('modal-anim')
+          setTimeout(() => {
+            modalOtherBg.remove();
+          },300)
         }
       });
 
@@ -247,7 +257,11 @@ addSystem.addEventListener('click', (event) => {
           actLic.innerHTML = ++count;
           user.activeLicenses = count;
           userBox.firstElementChild.lastElementChild.innerHTML = `<span>Active Licenses:</span> ${user.activeLicenses}`;
-          modalOtherBg.remove();
+          modalOtherBg.classList.remove('modal-bg-anim')
+          modalOther.classList.remove('modal-anim')
+          setTimeout(() => {
+            modalOtherBg.remove();
+          },300) 
         } else {
           alert('Please fill inputs.');
         }
