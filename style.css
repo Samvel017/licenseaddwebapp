@@ -477,6 +477,15 @@ main .license-container .license-block .removeLic:hover {
   width: 90%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.modal-input input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .modal-input input {
   width: 100%;
   border: none;
