@@ -882,10 +882,15 @@ input::-webkit-inner-spin-button {
   .modal-other-bg .modal-lic,
   .modal-other-bg .modal-other {
     max-width: 340px;
+    padding: 15px 25px 15px 25px;
   }
   #addSystem, .addLicBlock {
     margin: 15px auto 0 auto;
     display: block;
+  }
+  .modal-anim {
+    -webkit-transform: translate(-50%, 25%) !important;
+            transform: translate(-50%, 25%) !important;
   }
 }
 

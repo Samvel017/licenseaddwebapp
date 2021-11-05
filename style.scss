@@ -304,6 +304,9 @@ main {
 .position2 {
   position: relative;
 }
+
+// --------------- MODAL ----------------
+
 .modal-lic-bg,
 .modal-other-bg {
   position: fixed;
@@ -399,6 +402,9 @@ input::-webkit-inner-spin-button {
     color: #499861;
   }
 }
+
+// ----------------------------------
+
 .user-container h2 {
   text-align: center;
   display: flex;
@@ -677,10 +683,14 @@ input::-webkit-inner-spin-button {
   .modal-other-bg .modal-lic,
   .modal-other-bg .modal-other {
     max-width: 340px;
+    padding: 15px 25px 15px 25px;
   }
   #addSystem, .addLicBlock {
     margin: 15px auto 0 auto;
     display: block;
+  }
+  .modal-anim {
+    transform: translate(-50%, 25%) !important;
   }
 }
 @media screen and(max-width:480px) {
