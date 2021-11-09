@@ -191,7 +191,7 @@ addSystem.addEventListener('click', (event) => {
           <label class="lbl" for="licName">License Name</label> <br />
           <input type="text" name="name" id="licName" /> <br />
           <label class="lbl" for="licExp">License Expires (Date)</label> <br />
-          <input type="number" name="id" id="licExp" /> <br />
+          <input type="date" name="id" id="licExp" /> <br />
         </div>
         <button class="addLicBlock">Add License</button>
       </div>
